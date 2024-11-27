@@ -1,8 +1,12 @@
 const express = require('express')
 const mongoose = require('mongoose');
 const app = express()
+const bodyParser = require("body-parser")
 
-app.use(express.json());
+app.use(bodyParser.json())
+
+
+//app.use(express.json());
 
 
 app.get('/', (req, res) => {
@@ -10,7 +14,6 @@ app.get('/', (req, res) => {
 });
 
 app.post('/api/product', (req, res) => {
-    res.send("data Receiver");
     res.send(req.body);
 })
 
