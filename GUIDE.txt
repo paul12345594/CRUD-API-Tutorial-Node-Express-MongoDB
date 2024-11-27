@@ -1,0 +1,23 @@
+npm i express -------- for stalling EXPRESS 
+
+
+
+
+after installing 
+#1 npm install mongoose
+
+
+//Using Node.js `require()`
+const mongoose = require('mongoose');
+
+//Using ES6 imports
+import mongoose from 'mongoose';                   ====> HINDI KO GINAMIT 
+
+
+mongoose.connect('mongodb://127.0.0.1:27017/test')
+  .then(() => console.log('Connected!'));
+
+
+
+39:17 minutes
+
