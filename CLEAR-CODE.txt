@@ -1,17 +1,48 @@
+PRODUCT MODELS
+-----------------------------------------------------------------------------------------------------
+const mongoose = require('mongoose');
+const ProductSchema = mongoose.Schema(
+    {
+
+        name: {
+            type: String,
+            required: [true, "please enter product name"],
+        },
+
+        quantity: {
+            type: Number,
+            required: true,
+            default: 0
+        },
+
+        price: {
+            type: Number,
+            required: true,
+            default: 0
+        },
+
+        image: {
+            type: String,
+            required: false
+        },
+    },
+    {
+        timestamps: true,
+    }
+)
+const Product = mongoose.model("Product", ProductSchema);
+module.exports = Product;
+
+=====================================================================================================================================
+INDEX.js
+-------------------------------------------------------------------------------------------------------------------------------------
 const express = require('express')
 const mongoose = require('mongoose');
 const app = express()
-const bodyParser = require("body-parser")            // HINDI KASAMA SA VIDEO
+const bodyParser = require("body-parser")            
 const Product = require('./models/product.model.js');
 
-//MIDDLEWARE
-app.use(bodyParser.json())             // HINDI KASAMA SA VIDEO 
-app.use(express.urlencoded({extended: false}));                 // FOR x-www-form-urlencoded
-app.use(express.json());
-
-//ROUTES
-app.use('/api/product', productRoute);
-
+app.use(bodyParser.json())             
 
 // to see the POST item
 app.get('/', (req, res) => {
@@ -47,7 +78,7 @@ app.get('/api/product/:id', async (req, res) => {
     }
 });
 // update a product
-app.put('/api/product/:id', async (req, res) => {
+app.put('/api/products/:id', async (req, res) => {
     try{
         const {id} = req.params;
 
@@ -92,11 +123,6 @@ mongoose.connect("mongodb+srv://dungcapaul6:allen123@backenddb.jccys.mongodb.net
 .catch(() => {
     console.log("Connection failed");
 })
-
-//https://www.youtube.com/watch?v=zBTPDAh8ABM&list=PL6u82dzQtlfvJoAWdyf5mUxPQRnNKCMGt
-
-
-
 
 
 
