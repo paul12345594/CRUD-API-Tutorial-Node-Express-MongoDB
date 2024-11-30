@@ -11,13 +11,9 @@ app.use(bodyParser.json())             // HINDI KASAMA SA VIDEO
 app.use(express.urlencoded({ extended: false }));        // FOR x-www-form-urlencoded
 app.use(express.json());
 
-//ROUTES
+//ROUTES        -------------URL 
 app.use('/api/product', productRoute);
 
-// to see the POST item
-app.get('/', (req, res) => {
-    res.send("DANA AHAHHAHHA")
-});
 
 //CONNECT TO MONGODB 
 mongoose.connect("mongodb+srv://dungcapaul6:allen123@backenddb.jccys.mongodb.net/Node-API?retryWrites=true&w=majority&appName=BackendDB")
@@ -30,3 +26,6 @@ mongoose.connect("mongodb+srv://dungcapaul6:allen123@backenddb.jccys.mongodb.net
     .catch(() => {
         console.log("Connection failed");
     })
+
+
+    
